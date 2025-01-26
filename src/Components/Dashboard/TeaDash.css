@@ -1,0 +1,148 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f7;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.profile-section {
+  position: relative;
+}
+
+.profile-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 15px;
+  z-index: 10;
+  width: 250px;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.vertical-navbar {
+  width: 250px;
+  background-color: white;
+  border-right: 1px solid #e0e0e0;
+  padding: 20px 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.active-nav-item {
+  background-color: #f1f3f4;
+  color: rgb(17, 14, 19);
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f6f7;
+  overflow-y: auto;
+}
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.class-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-cell {
+  border: 1px solid #a810ef;
+  padding: 10px;
+  text-align: left;
+}
+
+.back-button {
+  margin-bottom: 15px;
+  padding: 8px 15px;
+  background-color: rgb(130, 15, 201);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.schedule-grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.schedule-grid th {
+  background-color: #bf92dd;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.schedule-grid td {
+  border: 1px solid #a515c9;
+  padding: 8px;
+  text-align: left;
+}
+
+.day-cell {
+  background-color: #bf92dd;
+  font-weight: bold;
+}
+
+.class-cell {
+  background-color: #ffffff;
+}
+
+.class-cell:empty {
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+}
