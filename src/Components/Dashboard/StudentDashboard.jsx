@@ -11,10 +11,10 @@ const StudentDashboard = () => {
   const [activeTab, setActiveTab] = useState('courses');
 
   // Mock data - replace with actual API calls
-  // <StudentProfile 
-  //   studentInfo={studentData}
-  //   personalInfo={personalData}
-  // />
+  <StudentProfile 
+    studentInfo={studentData}
+    personalInfo={personalData}
+  />
    const renderContent = () => {
     switch (activeTab) {
       case 'courses':
