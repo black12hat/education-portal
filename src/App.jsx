@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
-import { Book, User, Mail, Bell, Award, GraduationCap, Phone, ArrowLeft, Loader } from 'lucide-react';
+import { BrowserRouter as Router, Routes} from 'react-router-dom';
 import "./Styles/HomePage.css";
 import StudentDashboard from './Components/Dashboard/StudentDashboard';
 import TeacherDashboard from './Components/Dashboard/TeacherDashboard';
