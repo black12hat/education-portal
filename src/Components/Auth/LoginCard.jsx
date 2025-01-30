@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { Loader } from 'lucide-react';
-import { AuthContext } from '../../Context/AuthContext';
+import { AuthContext } from './AuthContext';
 import "../../Styles/HomePage.css"
-
-
 export const LoginCard = () => {
   const navigate = useNavigate();
   const { login } = React.useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [role, setRole] = useState('student');
   const [loginData, setLoginData] = useState({
     email: '',
-    password: '',
-    role: 'student' // Add role selection
+    password: ''
   });
   const [errors, setErrors] = useState({
     email: '',
@@ -69,16 +67,14 @@ export const LoginCard = () => {
     setErrors({ email: '', password: '', general: '' });
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-      const result = login(loginData);
-      
-      if (result.success) {
-        // Redirect based on role
-        navigate(result.role === 'teacher' ? '/teacher-dashboard' : '/dashboard');
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const success = login(loginData, role);
+      if (success) {
+        navigate(role === 'teacher' ? '/teacher-dashboard' : '/dashboard');
       } else {
         setErrors(prev => ({
           ...prev,
-          general: result.error || 'Invalid credentials'
+          general: 'Invalid credentials'
         }));
       }
     } catch (error) {
@@ -105,18 +101,27 @@ export const LoginCard = () => {
           )}
           
           <div className="form-group">
-            <label htmlFor="role">Login As</label>
-            <select
-              id="role"
-              name="role"
-              value={loginData.role}
-              onChange={handleInputChange}
-              disabled={isLoading}
-              className="form-select"
-            >
-              <option value="student">Student</option>
-              <option value="teacher">Teacher</option>
-            </select>
+            <label>Login as:</label>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  value="student"
+                  checked={role === 'student'}
+                  onChange={() => setRole('student')}
+                />
+                Student
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="teacher"
+                  checked={role === 'teacher'}
+                  onChange={() => setRole('teacher')}
+                />
+                Teacher
+              </label>
+            </div>
           </div>
 
           <div className="form-group">
@@ -172,4 +177,5 @@ export const LoginCard = () => {
     </div>
   );
 };
+
 export default LoginCard;

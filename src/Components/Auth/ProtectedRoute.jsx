@@ -1,17 +1,16 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext, AuthProvider } from './AuthContext';
 
-export const ProtectedRoute = ({ children, allowedRoles = ['student', 'teacher'] }) => {
+const ProtectedRoute = ({ children, allowedRoles }) => {
   const { user } = React.useContext(AuthContext);
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (!user || (allowedRoles && !allowedRoles.includes(user.role))) {
+      navigate('/');
+    }
+  }, [user, navigate, allowedRoles]);
 
-  if (!user) {
-    return <Navigate to="/" replace />;
-  }
-
-  if (!allowedRoles.includes(user.role)) {
-    return <Navigate to="/" replace />;
-  }
-
-  return children;
+  return user && (!allowedRoles || allowedRoles.includes(user.role)) ? children : null;
 };
+export default ProtectedRoute;

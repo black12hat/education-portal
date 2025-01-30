@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Book, User, Mail, Bell, Award, GraduationCap, Phone, Locate} from 'lucide-react';
-import { LoginCard } from '../../App';
+import { LoginCard } from '../Auth/LoginCard';
 import { blogData } from '../Content/BlogPage';
 // import { LoginCard } from '../Auth/LoginCard';
 const HomePage = () => {
